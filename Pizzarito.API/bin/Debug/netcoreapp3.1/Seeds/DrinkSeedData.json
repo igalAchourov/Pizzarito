@@ -1,0 +1,26 @@
+[
+    {
+        "Name":"Cola",
+        "Price":"10"
+    },
+    {
+        "Name":"Fanta",
+        "Price":"10"
+    },
+    {
+        "Name":"Sprite",
+        "Price":"10"
+    },
+    {
+        "Name":"Grape Juice",
+        "Price":"12"
+    },
+    {
+        "Name":"Orange Juice",
+        "Price":"12"
+    },
+    {
+        "Name":"Lemonade",
+        "Price":"15"
+    }
+]
