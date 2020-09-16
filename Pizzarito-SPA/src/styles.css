@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~bootswatch/dist/sketchy/bootstrap.min.css";
+h1{
+    color: tomato;
+    font-size: 60px;
+}
+ul{
+    list-style-type: none;
+}
+.fas:hover{
+    cursor: pointer;
+}

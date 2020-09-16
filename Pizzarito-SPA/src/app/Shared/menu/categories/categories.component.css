@@ -1,0 +1,10 @@
+td {
+  text-align: center;
+  border: 1px solid;
+  height: 280px;
+  width: 280px;
+  cursor: pointer;
+}
+td:hover {
+  background-color: tomato;
+}
