@@ -128,3 +128,6 @@ C:\Users\igala\Desktop\Pizzarito\pizzarito.api\bin\Debug\netcoreapp3.1\Seeds\Dri
 C:\Users\igala\Desktop\Pizzarito\pizzarito.api\bin\Debug\netcoreapp3.1\Seeds\DessertSeedData.json
 C:\Users\igala\Desktop\Pizzarito\pizzarito.api\bin\Debug\netcoreapp3.1\Seeds\SizeSeedData.json
 C:\Users\igala\Desktop\Pizzarito\pizzarito.api\bin\Debug\netcoreapp3.1\Seeds\StarterSeedData.json
+C:\Users\igala\Desktop\Pizzarito\pizzarito.api\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\igala\Desktop\Pizzarito\pizzarito.api\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\igala\Desktop\Pizzarito\pizzarito.api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll

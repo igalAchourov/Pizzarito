@@ -8,8 +8,9 @@ using Pizzarito.API.Data;
 
 namespace Pizzarito.API.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
+    [ApiController]
+    
     public class MenuController : ControllerBase
     {
         private readonly IMenuRepository _repo;
