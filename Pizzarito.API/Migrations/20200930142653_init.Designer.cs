@@ -10,7 +10,7 @@ using Pizzarito.API.Data;
 namespace Pizzarito.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200913094219_init")]
+    [Migration("20200930142653_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,7 +34,7 @@ namespace Pizzarito.API.Migrations
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Floor")
+                    b.Property<int?>("Floor")
                         .HasColumnType("int");
 
                     b.Property<string>("StreetName")
@@ -342,7 +342,7 @@ namespace Pizzarito.API.Migrations
                         .IsRequired();
 
                     b.HasOne("Pizzarito.API.Models.Order", "Order")
-                        .WithMany("Deserts")
+                        .WithMany("Desserts")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

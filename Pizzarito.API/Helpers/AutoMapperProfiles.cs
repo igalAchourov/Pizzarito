@@ -10,6 +10,8 @@ namespace Pizzarito.API.Helpers
         {
         
             CreateMap<UserForRegisterDto, User>();
+            CreateMap<UserForDetailedDto,User>();
+            CreateMap<User,UserForDetailedDto>();
             
 
         }

@@ -10,10 +10,12 @@ import { DrinksComponent } from './shared/menu/drinks/drinks.component';
 import { PizzasComponent } from './shared/menu/pizzas/pizzas.component';
 import { SizesComponent } from './shared/menu/pizzas/sizes/sizes.component';
 import { ExtrasComponent } from './shared/menu/pizzas/extras/extras.component';
+import { RegisterComponent } from './Shared/register/register.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  {path:'register' ,component:RegisterComponent},
   {
     path: 'menu',
     component: MenuComponent,

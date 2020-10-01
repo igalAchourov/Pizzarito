@@ -16,7 +16,7 @@ namespace Pizzarito.API.Migrations
                     City = table.Column<string>(nullable: true),
                     StreetName = table.Column<string>(nullable: true),
                     StreetNumber = table.Column<string>(nullable: true),
-                    Floor = table.Column<int>(nullable: false),
+                    Floor = table.Column<int>(nullable: true),
                     Apartment = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

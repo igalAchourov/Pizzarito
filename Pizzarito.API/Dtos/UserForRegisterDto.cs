@@ -14,9 +14,7 @@ namespace Pizzarito.API.Dtos
         public string Password { get; set; }
         [Required]
         public string FullName { get; set; }
-        [Required]
         public string Email { get; set; }
-        
         [Required]
         public Address Address { get; set; }
     }

@@ -10,7 +10,7 @@ namespace Pizzarito.API.Models
         public User User { get; set; }
         public int TotalBill { get; set; }
         public bool IsCash { get; set; }
-        public ICollection<OrderedDessert> Deserts { get; set; }
+        public ICollection<OrderedDessert> Desserts { get; set; }
         public ICollection<OrderedDrink> OrderedDrinks { get; set; }
         public ICollection<OrderedStarter> OrderedStarters { get; set; }
         public ICollection<Pizza> Pizzas { get; set; }

@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/alertifyjs/build/css/alertify.min.css";
+@import "../node_modules/alertifyjs/build/css/themes/bootstrap.min.css";
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~bootswatch/dist/sketchy/bootstrap.min.css";
 h1{

@@ -32,7 +32,7 @@ namespace Pizzarito.API.Migrations
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Floor")
+                    b.Property<int?>("Floor")
                         .HasColumnType("int");
 
                     b.Property<string>("StreetName")
@@ -340,7 +340,7 @@ namespace Pizzarito.API.Migrations
                         .IsRequired();
 
                     b.HasOne("Pizzarito.API.Models.Order", "Order")
-                        .WithMany("Deserts")
+                        .WithMany("Desserts")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

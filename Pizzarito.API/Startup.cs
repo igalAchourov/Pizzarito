@@ -34,9 +34,8 @@ namespace Pizzarito.API
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddAutoMapper(typeof (AuthRepository).Assembly);
             services.AddCors();
-            services
-                .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options =>
+            services.AddControllers().AddNewtonsoftJson();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
                 {
                     options.TokenValidationParameters =
                         new TokenValidationParameters {
@@ -70,7 +69,8 @@ namespace Pizzarito.API
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
+            app
+                .UseEndpoints(endpoints =>
                 {
                     endpoints.MapControllers();
                 });

@@ -8,6 +8,7 @@ namespace Pizzarito.API.Data
         Task<User> Register(User user,string password); 
         Task<User> Login(string userName,string password);
         Task<bool> UserExists(string userName);
+         Task<User> GetUser(int id);
     } 
    
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\igala\\Desktop\\Pizzarito\\pizzarito.api\\Pizzarito.API.csproj": {}
+    "C:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\Pizzarito.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\igala\\Desktop\\Pizzarito\\pizzarito.api\\Pizzarito.API.csproj": {
+    "C:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\Pizzarito.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\igala\\Desktop\\Pizzarito\\pizzarito.api\\Pizzarito.API.csproj",
+        "projectUniqueName": "C:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\Pizzarito.API.csproj",
         "projectName": "Pizzarito.API",
-        "projectPath": "C:\\Users\\igala\\Desktop\\Pizzarito\\pizzarito.api\\Pizzarito.API.csproj",
+        "projectPath": "C:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\Pizzarito.API.csproj",
         "packagesPath": "C:\\Users\\igala\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\igala\\Desktop\\Pizzarito\\pizzarito.api\\obj\\",
+        "outputPath": "C:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\igala\\AppData\\Roaming\\NuGet\\NuGet.Config",

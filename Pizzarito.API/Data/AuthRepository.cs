@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
-using Pizzarito.API.Models;
 using Microsoft.EntityFrameworkCore;
+using Pizzarito.API.Models;
 
 namespace Pizzarito.API.Data
 {
@@ -12,12 +12,15 @@ namespace Pizzarito.API.Data
         public AuthRepository(DataContext context)
         {
             _context = context;
-
         }
+
         public async Task<User> Login(string userName, string password)
         {
-            var user = await _context.Users.Include(o=>o.Orders).FirstOrDefaultAsync(u => u.UserName == userName);
-
+            var user =
+                await _context
+                    .Users
+                    .Include(o => o.Orders)
+                    .FirstOrDefaultAsync(u => u.UserName == userName);
 
             if (user == null)
             {
@@ -29,14 +32,22 @@ namespace Pizzarito.API.Data
             }
 
             return user;
-
         }
 
-        private bool VerifyPasswordHash(string password, byte[] passHash, byte[] passSalt)
+        private bool
+        VerifyPasswordHash(string password, byte[] passHash, byte[] passSalt)
         {
-            using (var hmac = new System.Security.Cryptography.HMACSHA512(passSalt))
+            using (
+                var hmac = new System.Security.Cryptography.HMACSHA512(passSalt)
+            )
             {
-                var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                var computedHash =
+                    hmac
+                        .ComputeHash(System
+                            .Text
+                            .Encoding
+                            .UTF8
+                            .GetBytes(password));
                 for (int i = 0; i < computedHash.Length; i++)
                 {
                     if (computedHash[i] != passHash[i])
@@ -50,7 +61,9 @@ namespace Pizzarito.API.Data
 
         public async Task<User> Register(User user, string password)
         {
-            byte[] passwordHash, passwordSalt;
+            byte[]
+                passwordHash,
+                passwordSalt;
 
             CreatePasswordHash(password, out passwordHash, out passwordSalt);
             user.PassHash = passwordHash;
@@ -61,13 +74,21 @@ namespace Pizzarito.API.Data
             return user;
         }
 
-        private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
+        private void CreatePasswordHash(
+            string password,
+            out byte[] passwordHash,
+            out byte[] passwordSalt
+        )
         {
-
             using (var hmac = new System.Security.Cryptography.HMACSHA512())
             {
                 passwordSalt = hmac.Key;
-                passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                passwordHash =
+                    hmac.ComputeHash(System
+                            .Text
+                            .Encoding
+                            .UTF8
+                            .GetBytes(password));
             }
         }
 
@@ -78,6 +99,13 @@ namespace Pizzarito.API.Data
                 return true;
             }
             return false;
+        }
+
+        public async Task<User> GetUser(int id)
+        {
+            var user =
+                await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            return user;
         }
     }
 }
