@@ -1,30 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MenuService } from 'src/app/Core/menu.service';
+import { OrderService } from 'src/app/Core/order.service';
 import { MenuItem } from 'src/app/Models/menuItem';
 
 @Component({
   selector: 'app-sizes',
   templateUrl: './sizes.component.html',
-  styleUrls: ['./sizes.component.css']
+  styleUrls: ['./sizes.component.css'],
 })
 export class SizesComponent implements OnInit {
+  sizes: MenuItem[];
 
-sizes:MenuItem[];
-
-  constructor(private router:Router,private menuService:MenuService ) { }
+  constructor(
+    private router: Router,
+    private menuService: MenuService,
+    private orderService: OrderService,
+    private ar:ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.menuService.getSizes().subscribe(data=>this.sizes = data);
+    this.ar.data.subscribe(data=>{
+      this.sizes= data['menuItem']});
   }
 
-
-  backToMenu(){
+  backToMenu() {
     this.router.navigate(['/menu']);
   }
 
-  addSize(){
-this.router.navigate(['menu/pizzas/extras']);
+  addSize(size: MenuItem) {
+    this.orderService.initPizza(size);
+    this.router.navigate(['menu/pizzas/extras']);
   }
-
 }

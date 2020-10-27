@@ -1,10 +1,13 @@
 td {
   text-align: center;
-  border: 1px solid;
+  border: 2px  solid tomato;
   height: 280px;
   width: 280px;
   cursor: pointer;
+  background-color:#FFEF93;
 }
 td:hover {
   background-color: tomato;
+
+
 }

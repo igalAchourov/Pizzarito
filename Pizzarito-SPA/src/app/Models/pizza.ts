@@ -1,13 +1,16 @@
 import { MenuItem } from "./menuItem";
 
-export interface Pizza{
+export class Pizza{
 id:number;
-size:MenuItem[];
+size:MenuItem;
 extras:MenuItem[];
 totalBill:number;
 
+constructor(size:MenuItem) {
 
-
+    this.size=size;
+    this.totalBill=0;
+}
 
 
 

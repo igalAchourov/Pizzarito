@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  baseUrl:'http://localhost:5000/api/'
+  baseUrl:'http://localhost:5000/api/',
+  serverConnectionError:'Seems there is a problem with the server, please try again later',
+  isServerShutDown:false
 };
 
 /*

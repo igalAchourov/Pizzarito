@@ -8,23 +8,6 @@ namespace Pizzarito.API.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Addresses",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    City = table.Column<string>(nullable: true),
-                    StreetName = table.Column<string>(nullable: true),
-                    StreetNumber = table.Column<string>(nullable: true),
-                    Floor = table.Column<int>(nullable: true),
-                    Apartment = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Addresses", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Desserts",
                 columns: table => new
                 {
@@ -104,16 +87,33 @@ namespace Pizzarito.API.Migrations
                     PassHash = table.Column<byte[]>(nullable: true),
                     PassSalt = table.Column<byte[]>(nullable: true),
                     FullName = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
-                    AddressId = table.Column<int>(nullable: false)
+                    Email = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Addresses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(nullable: false),
+                    City = table.Column<string>(nullable: true),
+                    StreetName = table.Column<string>(nullable: true),
+                    StreetNumber = table.Column<string>(nullable: true),
+                    Floor = table.Column<int>(nullable: true),
+                    Apartment = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Addresses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Users_Addresses_AddressId",
-                        column: x => x.AddressId,
-                        principalTable: "Addresses",
+                        name: "FK_Addresses_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -126,7 +126,8 @@ namespace Pizzarito.API.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<int>(nullable: false),
                     TotalBill = table.Column<int>(nullable: false),
-                    IsCash = table.Column<bool>(nullable: false)
+                    IsCash = table.Column<bool>(nullable: false),
+                    Date = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -145,7 +146,7 @@ namespace Pizzarito.API.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DesertId = table.Column<int>(nullable: false),
+                    DessertId = table.Column<int>(nullable: false),
                     OrderId = table.Column<int>(nullable: false),
                     Unit = table.Column<int>(nullable: false),
                     TotalBill = table.Column<int>(nullable: false)
@@ -154,8 +155,8 @@ namespace Pizzarito.API.Migrations
                 {
                     table.PrimaryKey("PK_OrderedDesserts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_OrderedDesserts_Desserts_DesertId",
-                        column: x => x.DesertId,
+                        name: "FK_OrderedDesserts_Desserts_DessertId",
+                        column: x => x.DessertId,
                         principalTable: "Desserts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -277,9 +278,15 @@ namespace Pizzarito.API.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderedDesserts_DesertId",
+                name: "IX_Addresses_UserId",
+                table: "Addresses",
+                column: "UserId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderedDesserts_DessertId",
                 table: "OrderedDesserts",
-                column: "DesertId");
+                column: "DessertId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderedDesserts_OrderId",
@@ -330,15 +337,13 @@ namespace Pizzarito.API.Migrations
                 name: "IX_Pizzas_SizeId",
                 table: "Pizzas",
                 column: "SizeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Users_AddressId",
-                table: "Users",
-                column: "AddressId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Addresses");
+
             migrationBuilder.DropTable(
                 name: "OrderedDesserts");
 
@@ -374,9 +379,6 @@ namespace Pizzarito.API.Migrations
 
             migrationBuilder.DropTable(
                 name: "Users");
-
-            migrationBuilder.DropTable(
-                name: "Addresses");
         }
     }
 }

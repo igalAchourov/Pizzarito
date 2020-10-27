@@ -5,11 +5,18 @@
 @import "~bootswatch/dist/sketchy/bootstrap.min.css";
 h1{
     color: tomato;
-    font-size: 60px;
+   font-size: 60px;
 }
+
 ul{
     list-style-type: none;
 }
 .fas:hover{
     cursor: pointer;
 }
+body{
+    background-color:#FFEF93 ;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

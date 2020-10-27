@@ -5476,11 +5476,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\Pizzarito.API.csproj",
+      "projectUniqueName": "C:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\Pizzarito.API.csproj",
       "projectName": "Pizzarito.API",
-      "projectPath": "c:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\Pizzarito.API.csproj",
+      "projectPath": "C:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\Pizzarito.API.csproj",
       "packagesPath": "C:\\Users\\igala\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\obj\\",
+      "outputPath": "C:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\igala\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5495,6 +5495,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -5506,6 +5507,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": {
             "target": "Package",
@@ -5550,6 +5552,16 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[3.1.2, 3.1.2]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[3.1.7, 3.1.7]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -5558,7 +5570,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100-rc.1.20452.10\\RuntimeIdentifierGraph.json"
       }
     }
   }

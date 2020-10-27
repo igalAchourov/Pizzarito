@@ -68,7 +68,6 @@ C:\Users\igala\Desktop\Pizzarito\pizzarito.api\obj\Debug\netcoreapp3.1\Pizzarito
 C:\Users\igala\Desktop\Pizzarito\pizzarito.api\obj\Debug\netcoreapp3.1\Pizzarito.API.pdb
 C:\Users\igala\Desktop\Pizzarito\pizzarito.api\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\igala\Desktop\Pizzarito\pizzarito.api\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\igala\Desktop\Pizzarito\pizzarito.api\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\igala\Desktop\Pizzarito\pizzarito.api\bin\Debug\netcoreapp3.1\Seeds\ExtraSeedData.json
 C:\Users\igala\Desktop\Pizzarito\pizzarito.api\bin\Debug\netcoreapp3.1\Pizzarito.API.exe
 C:\Users\igala\Desktop\Pizzarito\pizzarito.api\bin\Debug\netcoreapp3.1\Pizzarito.API.deps.json

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AlertifyService } from 'src/app/Core/alertify.service';
 import { MenuService } from 'src/app/Core/menu.service';
+import { OrderService } from 'src/app/Core/order.service';
 import { MenuItem } from 'src/app/Models/menuItem';
 
 @Component({
@@ -12,13 +14,22 @@ export class DrinksComponent implements OnInit {
 
   drinks:MenuItem[];
 
-  constructor(private menuService:MenuService,private router:Router) { }
+  constructor(private ar:ActivatedRoute,private menuService:MenuService,private router:Router,private orderService:OrderService,private alertify:AlertifyService) { }
 
   ngOnInit(): void {
-    this.menuService.getDrinks().subscribe(data=>this.drinks =data);
+    this.ar.data.subscribe(data=>{
+      this.drinks= data['menuItem']});
   }
 
   backToMenu(){
     this.router.navigate(['/menu'])
   }
+
+
+  add(drink: MenuItem) {
+    this.orderService.addDrink(drink);
+
+  }
+
+
 }

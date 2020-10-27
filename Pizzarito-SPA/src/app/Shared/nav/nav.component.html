@@ -21,13 +21,13 @@
    
       </ul>
 
-
+      <a  class=" text-light mr-3 " >
+        <i class="fa" style="font-size:24px" [routerLink]="['/order']">&#xf07a;</i>
+        <span class='badge badge-warning' id='lblCartCount'> {{orderService.currentOrder.items}}</span>
+      </a>
       <!-- RIGHT SIDE -->
       <div *ngIf="loggedIn()">
-        <a  class=" text-light mr-3 " >
-          <i class="fa" style="font-size:24px">&#xf07a;</i>
-          <span class='badge badge-warning' id='lblCartCount'> 5 </span>
-        </a>
+        
         <a
           class=" text-light"
           dropdownToggle

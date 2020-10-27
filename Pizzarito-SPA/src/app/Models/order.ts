@@ -1,6 +1,6 @@
 import { MenuItem} from "./menuItem";
 import { Pizza } from "./pizza";
-export interface Order{
+export class Order{
 
 id:number;
 userId:number;
@@ -10,7 +10,8 @@ desserts:MenuItem[];
 drinks:MenuItem[];
 starters:MenuItem[];
 pizzas:Pizza[];
-
+currentPizza:Pizza;
+items:number;
 
 
 }

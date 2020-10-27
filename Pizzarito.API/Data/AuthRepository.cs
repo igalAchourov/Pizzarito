@@ -16,11 +16,7 @@ namespace Pizzarito.API.Data
 
         public async Task<User> Login(string userName, string password)
         {
-            var user =
-                await _context
-                    .Users
-                    .Include(o => o.Orders)
-                    .FirstOrDefaultAsync(u => u.UserName == userName);
+            var user = await _context.Users.Include(o => o.Orders).Include(a => a.Address).FirstOrDefaultAsync(u => u.UserName == userName);
 
             if (user == null)
             {
@@ -41,13 +37,8 @@ namespace Pizzarito.API.Data
                 var hmac = new System.Security.Cryptography.HMACSHA512(passSalt)
             )
             {
-                var computedHash =
-                    hmac
-                        .ComputeHash(System
-                            .Text
-                            .Encoding
-                            .UTF8
-                            .GetBytes(password));
+                var computedHash = hmac
+                        .ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
                 for (int i = 0; i < computedHash.Length; i++)
                 {
                     if (computedHash[i] != passHash[i])

@@ -1,4 +1,4 @@
-export interface MenuItem{
+export class MenuItem{
 
 id:number;
 name:string;

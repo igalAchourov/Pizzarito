@@ -1,6 +1,7 @@
 import { Component ,OnInit} from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthService } from './Core/auth.service';
+import { OrderService } from './Core/order.service';
 import { User } from './Models/user';
 
 @Component({
@@ -13,7 +14,7 @@ export class AppComponent implements OnInit {
 
   jwtHelper = new JwtHelperService();
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,private orderService:OrderService) {}
 
   ngOnInit() {
     const token = localStorage.getItem('token');
@@ -24,5 +25,11 @@ export class AppComponent implements OnInit {
     if (user) {
       this.authService.currentUser = user;
     }
+
+    if(localStorage.getItem('order')){
+      this.orderService.currentOrder =JSON.parse(localStorage.getItem('order'));
+    }
+
+    
   }
 }

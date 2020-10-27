@@ -6,12 +6,12 @@
             <tr *ngFor="let drink of drinks">
               <td>{{ drink.name }}</td>
               <td>{{ drink.price }}₪</td>
-              <td><i class="fas fa-plus-circle" ></i></td>
+              <td><i class="fas fa-plus-circle" (click)="add(drink)" ></i></td>
             </tr>
           </table>
           <div  class="btn-group mt-4">
             <button class="btn btn-info btn-lg" (click)="backToMenu()">Back To Menu</button>
-          <button class="btn btn-success btn-lg" >Check Out</button>
+          <button class="btn btn-success btn-lg" [routerLink]="['/order']">Check Out</button>
           </div>
       </div>
     </div>

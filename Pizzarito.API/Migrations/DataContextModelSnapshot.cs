@@ -41,7 +41,13 @@ namespace Pizzarito.API.Migrations
                     b.Property<string>("StreetNumber")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Addresses");
                 });
@@ -125,6 +131,9 @@ namespace Pizzarito.API.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool>("IsCash")
                         .HasColumnType("bit");
 
@@ -148,7 +157,7 @@ namespace Pizzarito.API.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("DesertId")
+                    b.Property<int>("DessertId")
                         .HasColumnType("int");
 
                     b.Property<int>("OrderId")
@@ -162,7 +171,7 @@ namespace Pizzarito.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DesertId");
+                    b.HasIndex("DessertId");
 
                     b.HasIndex("OrderId");
 
@@ -297,9 +306,6 @@ namespace Pizzarito.API.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AddressId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
@@ -317,9 +323,16 @@ namespace Pizzarito.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AddressId");
-
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Pizzarito.API.Models.BaseItems.Address", b =>
+                {
+                    b.HasOne("Pizzarito.API.Models.User", "User")
+                        .WithOne("Address")
+                        .HasForeignKey("Pizzarito.API.Models.BaseItems.Address", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Pizzarito.API.Models.Order", b =>
@@ -333,14 +346,14 @@ namespace Pizzarito.API.Migrations
 
             modelBuilder.Entity("Pizzarito.API.Models.OrderedDessert", b =>
                 {
-                    b.HasOne("Pizzarito.API.Models.Dessert", "Desert")
+                    b.HasOne("Pizzarito.API.Models.Dessert", "Dessert")
                         .WithMany()
-                        .HasForeignKey("DesertId")
+                        .HasForeignKey("DessertId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Pizzarito.API.Models.Order", "Order")
-                        .WithMany("Desserts")
+                        .WithMany("OrderedDesserts")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -402,15 +415,6 @@ namespace Pizzarito.API.Migrations
                     b.HasOne("Pizzarito.API.Models.BaseItems.Size", "Size")
                         .WithMany()
                         .HasForeignKey("SizeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Pizzarito.API.Models.User", b =>
-                {
-                    b.HasOne("Pizzarito.API.Models.BaseItems.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

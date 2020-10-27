@@ -1,6 +1,6 @@
-.pizza-s {
+/* .pizza-s {
   border-radius: 400px;
-  border: 1px solid;
+  border: 0px solid;
   width: 100px;
   height: 100px;
   display: table-cell; 
@@ -9,7 +9,7 @@
 }
 .pizza-m {
   border-radius: 100px;
-  border: 1px solid;
+  border: 0px solid;
   width: 150px;
   height: 150px;
   display: table-cell; 
@@ -17,7 +17,7 @@
 }
 .pizza-l {
   border-radius: 150px;
-  border: 1px solid;
+  border: 0px solid;
   width: 200px;
   height: 200px;
   display: table-cell; 
@@ -25,12 +25,12 @@
 }
 .pizza-xl {
   border-radius: 2000px;
-  border: 1px solid;
+  border: 0px solid;
   width: 250px;
   height: 250px;
   display: table-cell; 
   vertical-align: middle;
-}
+} */
 h2{
     display: inline
 }

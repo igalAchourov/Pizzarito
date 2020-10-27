@@ -20,7 +20,13 @@ import { ExtrasComponent } from './shared/menu/pizzas/extras/extras.component';
 import { RegisterComponent } from './Shared/register/register.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NgxCaptchaModule } from 'ngx-captcha';
-
+import { OrderComponent } from './Shared/order/order.component';
+import { PreventUnsavedChanges } from './Guards/prevent-unsaved-changes.guard';
+import { PaymentComponent } from './Shared/payment/payment.component';
+import { ErrorInterceptorProvider } from './error.interceptor';
+import { MenuItemsResolver } from './Resolvers/menuItems.resolver';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatRadioModule} from '@angular/material/radio';
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
@@ -41,12 +47,15 @@ export function tokenGetter() {
     SizesComponent,
     ExtrasComponent,
     RegisterComponent,
+    OrderComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     NgxCaptchaModule,
     RouterModule,
+    MatRadioModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -55,8 +64,9 @@ export function tokenGetter() {
     RouterModule.forRoot(routes),
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [PreventUnsavedChanges,ErrorInterceptorProvider,MenuItemsResolver],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
