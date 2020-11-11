@@ -14,6 +14,7 @@ using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Pizzarito.API.Data;
 using Pizzarito.API.Helpers;
+using Stripe;
 
 namespace Pizzarito.API
 {
@@ -29,18 +30,20 @@ namespace Pizzarito.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(data =>data.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
+            services.AddDbContext<DataContext>(data => data.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
             services.AddControllers();
             services.AddScoped<IMenuRepository, MenuRepository>();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
-            services.AddAutoMapper(typeof (AuthRepository).Assembly);
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddAutoMapper(typeof(AuthRepository).Assembly);
             services.AddCors();
-             services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+            services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
                 {
                     options.TokenValidationParameters =
-                        new TokenValidationParameters {
+                        new TokenValidationParameters
+                        {
                             ValidateIssuerSigningKey = true,
                             IssuerSigningKey =
                                 new SymmetricSecurityKey(Encoding
@@ -52,16 +55,19 @@ namespace Pizzarito.API
                             ValidateAudience = false
                         };
                 });
+            services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            StripeConfiguration.ApiKey= Configuration.GetSection("Stripe")["SecretKey"];
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-             else
+            else
             {
                 app.UseExceptionHandler(builder =>
                 {

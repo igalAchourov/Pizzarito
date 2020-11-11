@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -26,13 +27,31 @@ namespace Pizzarito.API.Controllers
         [HttpPost]
         public async Task<IActionResult> AddOrder(Order order)
         {
-            
-                await _repo.AddOrder(order);
-                return Ok(order);
-            
-           
-        }
 
+            await _repo.AddOrder(order);
+            return Ok(order);
+
+
+        }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetOrders(int id)
+        {
+
+            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            {
+                return Unauthorized();
+            }
+            var orders = await _repo.GetOrders(id);
+            if (orders.Count() > 0)
+            {
+                return Ok(orders);
+            }
+            return NoContent();
+
+
+
+
+        }
 
 
 

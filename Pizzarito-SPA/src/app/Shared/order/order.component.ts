@@ -52,4 +52,8 @@ export class OrderComponent implements OnInit {
 
   }
 
+  doSomething(){
+    this.orderService.proceedToPayment(this.order).subscribe();
+  }
+
 }

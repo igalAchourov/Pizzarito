@@ -13,7 +13,7 @@ import { timer } from 'rxjs';
 })
 export class RegisterComponent implements OnInit {
   user: User;
-  registerForm: FormGroup;
+  registerForm: FormGroup;  
   emailRegEx = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
   onlyNumsRegEx = '^[0-9]*$';
 submitted:boolean;
@@ -72,7 +72,6 @@ siteKey:string;
   register() {
     if (this.registerForm.valid) {
       this.user = Object.assign({}, this.registerForm.value);
-      console.log(this.user);
       this.authService.register(this.user).subscribe(
         () => {
           this.alertify.success('Registration successful');

@@ -22,11 +22,16 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { OrderComponent } from './Shared/order/order.component';
 import { PreventUnsavedChanges } from './Guards/prevent-unsaved-changes.guard';
+import { PreventUnsavedChangesPaymentGuard } from './Guards/prevent-unsaved-changes-payment.guard';
 import { PaymentComponent } from './Shared/payment/payment.component';
 import { ErrorInterceptorProvider } from './error.interceptor';
 import { MenuItemsResolver } from './Resolvers/menuItems.resolver';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatRadioModule} from '@angular/material/radio';
+import { OrderHistoryComponent } from './Shared/order-history/order-history.component';
+import { PaymentMethodPipe } from './Shared/Pipes/payment-method.pipe';
+import { OrderHistoryDetailComponent } from './Shared/order-history-detail/order-history-detail.component';
+
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
@@ -49,6 +54,9 @@ export function tokenGetter() {
     RegisterComponent,
     OrderComponent,
     PaymentComponent,
+    OrderHistoryComponent,
+    PaymentMethodPipe,
+    OrderHistoryDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,17 +64,19 @@ export function tokenGetter() {
     NgxCaptchaModule,
     RouterModule,
     MatRadioModule,
-    JwtModule.forRoot({
+    JwtModule.forRoot( {
       config: {
         tokenGetter: tokenGetter,
-      },
+        allowedDomains: ["localhost:5000"],
+        disallowedRoutes: ["localhost:5000/api/auth"],
+      }
     }),
     RouterModule.forRoot(routes),
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
   ],
-  providers: [PreventUnsavedChanges,ErrorInterceptorProvider,MenuItemsResolver],
+  providers: [PreventUnsavedChanges,ErrorInterceptorProvider,MenuItemsResolver,PreventUnsavedChangesPaymentGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

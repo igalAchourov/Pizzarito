@@ -8,7 +8,7 @@ namespace Pizzarito.API.Models
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public User User { get; set; }
+        //public User User { get; set; }
         public int TotalBill { get; set; }
         public bool IsCash { get; set; }
         public DateTime Date { get; set; }
