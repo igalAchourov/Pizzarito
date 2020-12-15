@@ -1,57 +1,63 @@
-<div class="container">
-  <div class="row justify-content-center text-center">
-    <div class="col-4">
-      <h1><i>My Order</i></h1>
+<div class="text-center">
+  <h1><i>My Order</i></h1>
+</div>
 
-      <table class="mt-4">
-        <tr>
-          <div *ngFor="let pizza of order.pizzas">
-            <td>
-              <h4>Pizza({{ pizza.size.name }})</h4>
-            </td>
-            <td>
-              <i class="fas fa-trash-alt" (click)="removePizza(pizza)"></i>
-            </td>
-            <tr *ngFor="let extra of pizza.extras">
-              {{
-                extra.name
-              }}
-            </tr>
+<div class="container-fluid d-flex justify-content-center">
+  <div class="row">
+    <div class="col">
+      <div *ngIf="order.pizzas.length">
+        <h3>Pizzas</h3>
+        <div *ngFor="let pizza of order.pizzas">
+          <div class="d-flex justify-content-start">
+            <i class="fas fa-trash-alt" (click)="removePizza(pizza)"></i
+              >
+            Pizza({{ pizza.size.name }}) - &nbsp;
+            <div *ngIf="pizza.extras != undefined">
+              <div *ngFor="let extra of pizza.extras">
+                <span
+                  >{{ extra.name }} {{ extra.price }}₪
+                 </span>
+              </div>
+            </div>
+            <div *ngIf="pizza.extras == undefined">No extras</div>
           </div>
-        </tr>
+          
+        </div>
+        
+      </div>
+      <div *ngIf="order.starters.length != 0">
+        <h3>Starters</h3>
+        <div *ngFor="let starter of order.starters">
+          <div class="d-flex justify-content-start">
+           <span>{{ starter.name }} {{ starter.price }}₪</span>&nbsp;<i class="fas fa-trash-alt" (click)="removeStarter(starter)"></i>
+          </div>
+        </div>
+      </div>
+  
+      <div *ngIf="order.desserts.length != 0">
+        <h3>Desserts</h3>
+        <div *ngFor="let dessert of order.desserts">
+          <div class="d-flex justify-content-start">
+           <span>{{ dessert.name }} {{ dessert.price }}₪</span>&nbsp;<i class="fas fa-trash-alt" (click)="removeDessert(dessert)"></i>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="order.drinks.length != 0">
+        <h3>Drinks</h3>
+        <div *ngFor="let drink of order.drinks">
+          <div class="d-flex justify-content-start">
+           <span>{{ drink.name }} {{ drink.price }}₪</span>&nbsp;<i class="fas fa-trash-alt" (click)="removeDrink(drink)"></i>
+          </div>
+        </div>
+      </div>
 
-        <tr>
-          <div *ngFor="let starter of order.starters">
-            <td>{{ starter.name }} {{ starter.price }}₪</td>
-            <td>
-              <i class="fas fa-trash-alt" (click)="removeStarter(starter)"></i>
-            </td>
-          </div>
-        </tr>
-        <tr>
-          <div *ngFor="let dessert of order.desserts">
-            <td>{{ dessert.name }} {{ dessert.price }}₪</td>
-            <td>
-              <i class="fas fa-trash-alt" (click)="removeDessert(dessert)"></i>
-            </td>
-          </div>
-        </tr>
-        <tr>
-          <div *ngFor="let drink of order.drinks">
-            <td>{{ drink.name }} {{ drink.price }}₪</td>
-            <td>
-              <i class="fas fa-trash-alt" (click)="removeDrink(drink)"></i>
-            </td>
-          </div>
-        </tr>
-      </table>
-      <div *ngIf="order.totalBill != 0">
+      <div *ngIf="order.totalBill != 0 || order== undefined">
         <h2 class="mt-5">Total:{{ order.totalBill }}₪</h2>
         <div class="btn-group mt-4">
           <button class="btn btn-info btn-lg" (click)="backToMenu()">
             Back To Menu
           </button>
-          <button class="btn btn-primary btn-lg" (click)="doSomething()">
+          <button class="btn btn-primary btn-lg" (click)="proceedToPayment()">
             That`s All <i class="fas fa-dollar-sign"></i>
           </button>
         </div>
@@ -69,3 +75,46 @@
     </div>
   </div>
 </div>
+
+<!-- <table class="mt-4">
+  <tr>
+    <div *ngFor="let pizza of order.pizzas">
+      <td>
+        <h4>Pizza({{ pizza.size.name }})</h4>
+      </td>
+      <td>
+        <i class="fas fa-trash-alt" (click)="removePizza(pizza)"></i>
+      </td>
+      <tr *ngFor="let extra of pizza.extras">
+        {{
+          extra.name
+        }}
+      </tr>
+    </div>
+  </tr>
+
+  <tr>
+    <div *ngFor="let starter of order.starters">
+      <td>{{ starter.name }} {{ starter.price }}₪</td>
+      <td>
+        <i class="fas fa-trash-alt" (click)="removeStarter(starter)"></i>
+      </td>
+    </div>
+  </tr>
+  <tr>
+    <div *ngFor="let dessert of order.desserts">
+      <td>{{ dessert.name }} {{ dessert.price }}₪</td>
+      <td>
+        <i class="fas fa-trash-alt" (click)="removeDessert(dessert)"></i>
+      </td>
+    </div>
+  </tr>
+  <tr>
+    <div *ngFor="let drink of order.drinks">
+      <td>{{ drink.name }} {{ drink.price }}₪</td>
+      <td>
+        <i class="fas fa-trash-alt" (click)="removeDrink(drink)"></i>
+      </td>
+    </div>
+  </tr>
+</table> -->

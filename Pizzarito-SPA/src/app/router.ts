@@ -16,6 +16,11 @@ import { ExtrasGuard } from './Guards/extras.guard';
 import { PaymentComponent } from './Shared/payment/payment.component';
 import { MenuItemsResolver } from 'src/app/Resolvers/menuItems.resolver';
 import { PreventUnsavedChangesPaymentGuard } from './Guards/prevent-unsaved-changes-payment.guard';
+import { OrderHistoryComponent } from './Shared/order-history/order-history.component';
+import { OrderHistoryDetailResolver } from 'src/app/Resolvers/orderHistoryDetail.resolver';
+import { OrderHistoryDetailComponent } from './Shared/order-history-detail/order-history-detail.component';
+
+
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -63,6 +68,16 @@ export const routes: Routes = [
         ],
       },
     ],
+  },
+
+  {
+    path: 'orderHistory',
+    component: OrderHistoryComponent,
+  },
+  {
+    path: 'orderHistory/:orderId',
+    component: OrderHistoryDetailComponent,
+    resolve:{order:OrderHistoryDetailResolver}
   },
   { path: 'about', component: AboutComponent },
   {

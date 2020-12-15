@@ -318,6 +318,10 @@ export class OrderService {
     return this.http.get(this.baseUrl+'order/'+id);
   }
 
+  getOrder(orderId:number){
+    return this.http.get(this.baseUrl+'order/'+this.authService.decodedToken.nameid+'/orderHistory/'+orderId);
+  }
+
 
 
 }

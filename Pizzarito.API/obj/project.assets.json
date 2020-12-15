@@ -532,7 +532,7 @@
           }
         }
       },
-      "Stripe.net/39.22.0": {
+      "Stripe.net/39.30.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.Bcl.AsyncInterfaces": "1.1.0",
@@ -2304,10 +2304,10 @@
         "version.txt"
       ]
     },
-    "Stripe.net/39.22.0": {
-      "sha512": "zHGFtweRQ3/Y2i7f1YjPAmzBcIMrMwyPTRjpRTA2devFx2qf0Dd/Zv3/Jt3Y/ju/6TbTgV4CfO8Y3uRPhFkB0Q==",
+    "Stripe.net/39.30.0": {
+      "sha512": "fVazoGSfV5wUJNAPBpxvEh5XNmRZKmcb7YgoHpoIz223ENehm5rhOQ2SMAakPxDDbq0BMrzs74VTX3YrveRcCA==",
       "type": "package",
-      "path": "stripe.net/39.22.0",
+      "path": "stripe.net/39.30.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2316,10 +2316,13 @@
         "lib/net461/Stripe.net.dll",
         "lib/net461/Stripe.net.pdb",
         "lib/net461/Stripe.net.xml",
+        "lib/net5.0/Stripe.net.dll",
+        "lib/net5.0/Stripe.net.pdb",
+        "lib/net5.0/Stripe.net.xml",
         "lib/netstandard2.0/Stripe.net.dll",
         "lib/netstandard2.0/Stripe.net.pdb",
         "lib/netstandard2.0/Stripe.net.xml",
-        "stripe.net.39.22.0.nupkg.sha512",
+        "stripe.net.39.30.0.nupkg.sha512",
         "stripe.net.nuspec"
       ]
     },
@@ -5500,7 +5503,7 @@
       "Microsoft.EntityFrameworkCore.Design >= 3.1.8",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.8",
       "Microsoft.IdentityModel.Tokens >= 6.7.1",
-      "Stripe.net >= 39.22.0",
+      "Stripe.net >= 39.30.0",
       "System.IdentityModel.Tokens.Jwt >= 6.7.1"
     ]
   },
@@ -5510,11 +5513,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\Pizzarito.API.csproj",
+      "projectUniqueName": "c:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\Pizzarito.API.csproj",
       "projectName": "Pizzarito.API",
-      "projectPath": "C:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\Pizzarito.API.csproj",
+      "projectPath": "c:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\Pizzarito.API.csproj",
       "packagesPath": "C:\\Users\\igala\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\obj\\",
+      "outputPath": "c:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\igala\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5573,7 +5576,7 @@
           },
           "Stripe.net": {
             "target": "Package",
-            "version": "[39.22.0, )"
+            "version": "[39.30.0, )"
           },
           "System.IdentityModel.Tokens.Jwt": {
             "target": "Package",
@@ -5593,11 +5596,11 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.2, 3.1.2]"
+            "version": "[3.1.10, 3.1.10]"
           },
           {
             "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[3.1.7, 3.1.7]"
+            "version": "[3.1.10, 3.1.10]"
           }
         ],
         "frameworkReferences": {
@@ -5608,7 +5611,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100-rc.1.20452.10\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -131,3 +131,4 @@ C:\Users\igala\Desktop\Pizzarito\pizzarito.api\bin\Debug\netcoreapp3.1\AutoMappe
 C:\Users\igala\Desktop\Pizzarito\pizzarito.api\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\igala\Desktop\Pizzarito\pizzarito.api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\igala\Desktop\Pizzarito\Pizzarito.API\bin\Debug\netcoreapp3.1\Stripe.net.dll
+C:\Users\igala\Desktop\Pizzarito\Pizzarito.API\obj\Debug\netcoreapp3.1\scopedcss\bundle\Pizzarito.API.styles.css

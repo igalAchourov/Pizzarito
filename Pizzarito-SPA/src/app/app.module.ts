@@ -31,6 +31,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import { OrderHistoryComponent } from './Shared/order-history/order-history.component';
 import { PaymentMethodPipe } from './Shared/Pipes/payment-method.pipe';
 import { OrderHistoryDetailComponent } from './Shared/order-history-detail/order-history-detail.component';
+import { OrderHistoryDetailResolver } from './Resolvers/orderHistoryDetail.resolver';
+import { StripeModule } from "stripe-angular";
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -71,12 +73,14 @@ export function tokenGetter() {
         disallowedRoutes: ["localhost:5000/api/auth"],
       }
     }),
+    StripeModule.forRoot("pk_test_51Hl8GpHXD18lLEyMSyLXPyafUQjFtUuKSvbsUq4R2KVy7iwHKSULKh6rQelN8b0Yyy4OsL8rh1gF8RKunXa6zcW9001x0Q8yy7"),
     RouterModule.forRoot(routes),
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
   ],
-  providers: [PreventUnsavedChanges,ErrorInterceptorProvider,MenuItemsResolver,PreventUnsavedChangesPaymentGuard],
+  providers: [PreventUnsavedChanges,ErrorInterceptorProvider,MenuItemsResolver,OrderHistoryDetailResolver,PreventUnsavedChangesPaymentGuard],
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}

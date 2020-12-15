@@ -47,13 +47,21 @@ namespace Pizzarito.API.Controllers
                 return Ok(orders);
             }
             return NoContent();
-
-
-
-
         }
 
+        [HttpGet("{userId}/orderHistory/{orderId}")]
+        public async Task<IActionResult> GetOrder(int userId,int orderId)
+        {
 
+            // if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            // {
+            //     return Unauthorized();
+            // }
+            var order = await _repo.GetOrder(orderId);
+            
+                return Ok(order);
+            
+        }
 
 
     }

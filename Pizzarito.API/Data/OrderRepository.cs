@@ -44,5 +44,28 @@ namespace Pizzarito.API.Data
             return null;
 
         }
+
+
+
+
+        public async Task<Order> GetOrder(int orderId)
+        {
+
+            if (_context.Orders.Count() > 0)
+            {
+                var order = await _context.Orders.Include(o => o.OrderedDesserts).ThenInclude(d => d.Dessert)
+                            .Include(o => o.OrderedDrinks).ThenInclude(d => d.Drink)
+                            .Include(o => o.OrderedStarters).ThenInclude(d => d.Starter)
+                            .Include(o => o.Pizzas).ThenInclude(p => p.Extras).ThenInclude(o => o.Extra).Include(o => o.Pizzas).ThenInclude(o => o.Size)
+                            .OrderBy(o => o.Date)
+                            .FirstOrDefaultAsync(o => o.Id == orderId);
+                if (order != null)
+                {
+                    return order;
+                }
+            }
+            return null;
+
+        }
     }
 }

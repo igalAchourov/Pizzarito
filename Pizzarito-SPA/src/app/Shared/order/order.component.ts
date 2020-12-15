@@ -32,6 +32,7 @@ export class OrderComponent implements OnInit {
   }
   removePizza(pizza:Pizza){
     this.orderService.removePizza(pizza);
+    
   }
   backToMenu(){
     this.router.navigate(['/menu'])

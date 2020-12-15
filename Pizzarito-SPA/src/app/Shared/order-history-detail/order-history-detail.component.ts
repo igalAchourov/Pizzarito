@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-order-history-detail',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderHistoryDetailComponent implements OnInit {
 
-  constructor() { }
+
+order:any;
+
+  constructor(private ar:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.ar.data.subscribe(order=>this.order=order.order);
+    // this.order=x['order']
   }
 
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\Pizzarito.API.csproj": {}
+    "c:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\Pizzarito.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\Pizzarito.API.csproj": {
+    "c:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\Pizzarito.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\Pizzarito.API.csproj",
+        "projectUniqueName": "c:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\Pizzarito.API.csproj",
         "projectName": "Pizzarito.API",
-        "projectPath": "C:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\Pizzarito.API.csproj",
+        "projectPath": "c:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\Pizzarito.API.csproj",
         "packagesPath": "C:\\Users\\igala\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\obj\\",
+        "outputPath": "c:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\igala\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -70,7 +70,7 @@
             },
             "Stripe.net": {
               "target": "Package",
-              "version": "[39.22.0, )"
+              "version": "[39.30.0, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
@@ -90,11 +90,11 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.2, 3.1.2]"
+              "version": "[3.1.10, 3.1.10]"
             },
             {
               "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[3.1.7, 3.1.7]"
+              "version": "[3.1.10, 3.1.10]"
             }
           ],
           "frameworkReferences": {
@@ -105,7 +105,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100-rc.1.20452.10\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

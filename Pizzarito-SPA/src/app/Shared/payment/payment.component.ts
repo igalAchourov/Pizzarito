@@ -5,6 +5,7 @@ import { Address } from 'src/app/Models/address';
 import { Order } from 'src/app/Models/order';
 import { UserService } from 'src/app/Core/user.service';
 
+
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -91,4 +92,6 @@ export class PaymentComponent implements OnInit {
   doSomething(){
     console.log(this.ccForm);
   }
+  // **************************************************************************************************************************************
+
 }

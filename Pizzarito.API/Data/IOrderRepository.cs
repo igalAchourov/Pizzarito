@@ -9,5 +9,7 @@ namespace Pizzarito.API.Data
     {
         Task<Order> AddOrder(Order order);
         Task<IEnumerable<Order>> GetOrders(int userId);
+
+        Task<Order> GetOrder(int orderId);
     }
 }

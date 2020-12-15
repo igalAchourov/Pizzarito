@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6MmWLx4N8n6n3lvd+Xt7zC8u5h2JNTU0PO1nRIaTBEn2Jt3lzps8zyp5vOeetzJyLn0RLrdOUeLnrrCVfefbBg==",
+  "dgSpecHash": "Ye8tz5uOOuZHvgrzzkg6XvUWtra9IFqx2cvGpw0kfasRzHnyiedF626Kh46zKuoDoh+TGtMdwbGzFz0OmWDaow==",
   "success": true,
-  "projectFilePath": "C:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\Pizzarito.API.csproj",
+  "projectFilePath": "c:\\Users\\igala\\Desktop\\Pizzarito\\Pizzarito.API\\Pizzarito.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\igala\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
     "C:\\Users\\igala\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.0.1\\automapper.extensions.microsoft.dependencyinjection.8.0.1.nupkg.sha512",
@@ -46,7 +46,7 @@
     "C:\\Users\\igala\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\igala\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\igala\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
-    "C:\\Users\\igala\\.nuget\\packages\\stripe.net\\39.22.0\\stripe.net.39.22.0.nupkg.sha512",
+    "C:\\Users\\igala\\.nuget\\packages\\stripe.net\\39.30.0\\stripe.net.39.30.0.nupkg.sha512",
     "C:\\Users\\igala\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\igala\\.nuget\\packages\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",
     "C:\\Users\\igala\\.nuget\\packages\\system.collections.immutable\\1.7.1\\system.collections.immutable.1.7.1.nupkg.sha512",
@@ -106,8 +106,8 @@
     "C:\\Users\\igala\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\igala\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\igala\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\igala\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512",
-    "C:\\Users\\igala\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.7\\microsoft.netcore.app.host.win-x64.3.1.7.nupkg.sha512"
+    "C:\\Users\\igala\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\igala\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.10\\microsoft.netcore.app.host.win-x64.3.1.10.nupkg.sha512"
   ],
   "logs": []
 }

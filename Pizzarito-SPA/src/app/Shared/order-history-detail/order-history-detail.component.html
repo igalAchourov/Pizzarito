@@ -1,1 +1,62 @@
-<p>order-history-detail works!</p>
+<div class="text-center">
+  <h1><i>Order History</i></h1>
+</div>
+
+<div class="container-fluid d-flex justify-content-center">
+  <div class="row">
+    <div class="col">
+      
+      <div *ngIf="order" class="mt-3">
+        <div>
+          <b>Date:{{ order.date | date: "MMM d, y, h:mm:ss a" }}</b> <br />
+          <b>Bill:{{ order.totalBill }}₪</b><br />
+          <b>Payed with:{{ order.isCash | paymentMethod }}</b>
+
+          <div *ngIf="order.pizzas.length">
+            <h3>Pizzas:</h3>
+
+            <div *ngFor="let pizza of order.pizzas">
+              <div class="d-flex justify-content-start">
+                Pizza({{ pizza.size.name }}) - &nbsp;
+                <div *ngIf="pizza.extras.length">
+                  <div *ngFor="let extra of pizza.extras">
+                    <span>{{ extra.extra.name }} {{ extra.extra.price }}₪</span>
+                  </div>
+                </div>
+                <div *ngIf="!pizza.extras.length">No extras</div>
+              </div>
+              <p>Price:{{ pizza.totalBill }}₪</p>
+            </div>
+          </div>
+          <div *ngIf="order.orderedStarters.length">
+            <h3>Starters:</h3>
+            <div *ngFor="let starter of order.orderedStarters">
+              <p>
+                {{ starter.starter.name }} x {{ starter.unit }} =
+                {{ starter.totalBill }}₪
+              </p>
+            </div>
+          </div>
+          <div *ngIf="order.orderedDesserts.length">
+            <h3>Desserts:</h3>
+            <div *ngFor="let dessert of order.orderedDesserts">
+              <p>
+                {{ dessert.dessert.name }} x {{ dessert.unit }} =
+                {{ dessert.totalBill }}₪
+              </p>
+            </div>
+          </div>
+          <div *ngIf="order.orderedDrinks.length">
+            <h3>Drinks:</h3>
+            <div *ngFor="let drink of order.orderedDrinks">
+              <p>
+                {{ drink.drink.name }} x {{ drink.unit }} =
+                {{ drink.totalBill }}₪
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
