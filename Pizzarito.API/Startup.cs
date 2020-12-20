@@ -14,7 +14,6 @@ using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Pizzarito.API.Data;
 using Pizzarito.API.Helpers;
-using Stripe;
 
 namespace Pizzarito.API
 {
@@ -55,8 +54,6 @@ namespace Pizzarito.API
                             ValidateAudience = false
                         };
                 });
-            services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
-            StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -88,12 +85,9 @@ namespace Pizzarito.API
             // app.UseHttpsRedirection();
 
             app.UseRouting();
-            app
-                .UseCors(data =>
-                    data.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseCors(data =>data.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
             app.UseAuthorization();
-
             app
                 .UseEndpoints(endpoints =>
                 {

@@ -532,7 +532,7 @@
           }
         }
       },
-      "Stripe.net/39.30.0": {
+      "Stripe.net/39.31.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.Bcl.AsyncInterfaces": "1.1.0",
@@ -2304,10 +2304,10 @@
         "version.txt"
       ]
     },
-    "Stripe.net/39.30.0": {
-      "sha512": "fVazoGSfV5wUJNAPBpxvEh5XNmRZKmcb7YgoHpoIz223ENehm5rhOQ2SMAakPxDDbq0BMrzs74VTX3YrveRcCA==",
+    "Stripe.net/39.31.0": {
+      "sha512": "H1pxgDLR9rYcph8Mbmhg4Sjn4x/cGZEeU6ejIIhWSuNUxs/tS9Tp8KxE1sTkVvJqNfUVSfCfLEhfrJlb9t+pGw==",
       "type": "package",
-      "path": "stripe.net/39.30.0",
+      "path": "stripe.net/39.31.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2322,7 +2322,7 @@
         "lib/netstandard2.0/Stripe.net.dll",
         "lib/netstandard2.0/Stripe.net.pdb",
         "lib/netstandard2.0/Stripe.net.xml",
-        "stripe.net.39.30.0.nupkg.sha512",
+        "stripe.net.39.31.0.nupkg.sha512",
         "stripe.net.nuspec"
       ]
     },
@@ -5503,7 +5503,7 @@
       "Microsoft.EntityFrameworkCore.Design >= 3.1.8",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.8",
       "Microsoft.IdentityModel.Tokens >= 6.7.1",
-      "Stripe.net >= 39.30.0",
+      "Stripe.net >= 39.31.0",
       "System.IdentityModel.Tokens.Jwt >= 6.7.1"
     ]
   },
@@ -5576,7 +5576,7 @@
           },
           "Stripe.net": {
             "target": "Package",
-            "version": "[39.30.0, )"
+            "version": "[39.31.0, )"
           },
           "System.IdentityModel.Tokens.Jwt": {
             "target": "Package",

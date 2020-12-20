@@ -53,10 +53,10 @@ namespace Pizzarito.API.Controllers
         public async Task<IActionResult> GetOrder(int userId,int orderId)
         {
 
-            // if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-            // {
-            //     return Unauthorized();
-            // }
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            {
+                return Unauthorized();
+            }
             var order = await _repo.GetOrder(orderId);
             
                 return Ok(order);

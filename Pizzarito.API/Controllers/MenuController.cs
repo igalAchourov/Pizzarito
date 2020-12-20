@@ -10,7 +10,7 @@ namespace Pizzarito.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    
+
     public class MenuController : ControllerBase
     {
         private readonly IMenuRepository _repo;
@@ -24,61 +24,71 @@ namespace Pizzarito.API.Controllers
         [HttpGet("Drinks")]
         public async Task<IActionResult> GetDrinks()
         {
-            try{
-                var drinks=await _repo.GetDrinks(); 
+            try
+            {
+                var drinks = await _repo.GetDrinks();
                 return Ok(drinks);
             }
-            catch(Exception ex){
-               throw new Exception(ex.Message);
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
 
- [HttpGet ("Sizes")]
+        [HttpGet("Sizes")]
         public async Task<IActionResult> GetSizes()
         {
-            try{
-                var sizes=await _repo.GetSizes(); 
+            try
+            {
+                var sizes = await _repo.GetSizes();
                 return Ok(sizes);
             }
-            catch(Exception ex){
-               throw new Exception(ex.Message);
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
 
-        [HttpGet ("Extras")]
+        [HttpGet("Extras")]
         public async Task<IActionResult> GetExtras()
         {
-            try{
-                var extras=await _repo.GetExtras(); 
+            try
+            {
+                var extras = await _repo.GetExtras();
                 return Ok(extras);
             }
-            catch(Exception ex){
-               throw new Exception(ex.Message);
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
 
-        [HttpGet ("desserts")]
+        [HttpGet("desserts")]
         public async Task<IActionResult> GetDesserts()
         {
-            try{
-                var desserts=await _repo.GetDesserts(); 
+            try
+            {
+                var desserts = await _repo.GetDesserts();
                 return Ok(desserts);
             }
-            catch(Exception ex){
-               throw new Exception(ex.Message);
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
 
 
-        [HttpGet ("Starters")]
+        [HttpGet("Starters")]
         public async Task<IActionResult> GetStarters()
         {
-            try{
-                var starters=await _repo.GetStarters(); 
+            try
+            {
+                var starters = await _repo.GetStarters();
                 return Ok(starters);
             }
-            catch(Exception ex){
-               throw new Exception(ex.Message);
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
 

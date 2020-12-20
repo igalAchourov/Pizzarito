@@ -14,6 +14,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root',
 })
 export class OrderService {
+
   currentOrder: Order;
   baseUrl = environment.baseUrl;
 
@@ -29,7 +30,7 @@ export class OrderService {
     }
   }
 
-  // ************************HELPERS*****************************
+
   updateLsAndTotalBill(item: MenuItem, calc: string) {
     if (calc == 'add') {
       this.currentOrder.totalBill += item.price;
@@ -50,6 +51,32 @@ export class OrderService {
       }
     }
     return false;
+  }
+
+  resetOrder(){
+
+    this.currentOrder=undefined;
+
+
+
+    console.log(this.currentOrder);
+    
+  }
+
+  
+  sendOrder(isCash:boolean) {
+
+    let orderToServer = {
+      UserId: this.authService.currentUser.id,
+      TotalBill: this.currentOrder.totalBill,
+      IsCash: isCash,
+      OrderedDesserts: this.mapToOrderedDesserts(this.currentOrder.desserts),
+      OrderedDrinks: this.mapToOrderedDrinks(this.currentOrder.drinks),
+      OrderedStarters: this.mapToOrderedStarters(this.currentOrder.starters),
+      Pizzas: this.mapPizzas(this.currentOrder.pizzas),
+    };
+
+     return this.http.post(this.baseUrl + 'order', orderToServer);
   }
 
   // ******************ADD FUNCTIONS*************************
@@ -179,28 +206,13 @@ export class OrderService {
     );
   }
 
-  proceedToPayment(order: Order) {
-
-    let orderToServer = {
-      UserId: this.authService.currentUser.id,
-      TotalBill: order.totalBill,
-      IsCash: true,
-      OrderedDesserts: this.mapToOrderedDesserts(order.desserts),
-      OrderedDrinks: this.mapToOrderedDrinks(order.drinks),
-      OrderedStarters: this.mapToOrderedStarters(order.starters),
-      Pizzas: this.mapPizzas(order.pizzas),
-    };
-
-     return this.http.post(this.baseUrl + 'order', orderToServer);
-  }
 
   //******************* MAPPING FUNCTIONS *******************
   mapToOrderedDesserts(desserts: MenuItem[]) {
-    //debugger;
     let itemsMap = new Map<number, any>();
     let itemsToServer: any[] = [];
 
-    if(desserts){
+    if( desserts ){
       desserts.forEach((el) => {
         if (itemsMap.has(el.id)) {
           itemsMap.set(el.id, {
@@ -220,11 +232,11 @@ export class OrderService {
       itemsMap.forEach((val, key) => {
         itemsToServer.push(val);
       });
-
+   
     }
-    
+    return itemsToServer; 
 
-    return itemsToServer;
+ 
   }
 
   mapToOrderedDrinks(drinks: MenuItem[]) {
@@ -293,6 +305,8 @@ export class OrderService {
     let pizzasToServer: any[] = [];
     let pizza: any = new Object();
     pizza.Extras = [];
+
+    
     pizzas.forEach((el) => {
       pizza.SizeId = el.size.id;
       pizza.TotalBill=el.totalBill;

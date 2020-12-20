@@ -4,7 +4,10 @@ import { AuthService } from 'src/app/Core/auth.service';
 import { Address } from 'src/app/Models/address';
 import { Order } from 'src/app/Models/order';
 import { UserService } from 'src/app/Core/user.service';
-
+import { PaymentService } from '../../Core/payment.service';
+import { OrderService } from 'src/app/Core/order.service';
+import { AlertifyService } from 'src/app/Core/alertify.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
@@ -12,7 +15,6 @@ import { UserService } from 'src/app/Core/user.service';
   styleUrls: ['./payment.component.css'],
 })
 export class PaymentComponent implements OnInit {
-
   @HostListener('window:beforeunload', ['$event'])
   unloadNotification($event: any) {
     if (this.editUserAddressForm.dirty || this.ccForm.dirty) {
@@ -26,12 +28,16 @@ export class PaymentComponent implements OnInit {
   addressEditMode: boolean = false;
   onlyNumsRegEx = '^[0-9]*$';
 
-  address: Address ;
+  address: Address;
 
   constructor(
     public authService: AuthService,
     private fb: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private paymentService: PaymentService,
+    private orderService: OrderService,
+    private alertify: AlertifyService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -51,7 +57,8 @@ export class PaymentComponent implements OnInit {
           Validators.pattern(this.onlyNumsRegEx),
         ],
       ],
-      ccexp: ['', Validators.required],
+      ccmonth: ['', Validators.required],
+      ccyear: ['', Validators.required],
       cvv: [
         '',
         [
@@ -66,10 +73,16 @@ export class PaymentComponent implements OnInit {
   createAddressEditForm() {
     this.editUserAddressForm = this.fb.group({
       city: [this.authService.currentUser.address.city, Validators.required],
-      streetName: [this.authService.currentUser.address.streetName,Validators.required],
-      streetNumber: [this.authService.currentUser.address.streetNumber,Validators.required],
-      floor: [this.authService.currentUser.address.floor,],
-      apartment: [this.authService.currentUser.address.apartment]
+      streetName: [
+        this.authService.currentUser.address.streetName,
+        Validators.required,
+      ],
+      streetNumber: [
+        this.authService.currentUser.address.streetNumber,
+        Validators.required,
+      ],
+      floor: [this.authService.currentUser.address.floor],
+      apartment: [this.authService.currentUser.address.apartment],
     });
   }
 
@@ -78,20 +91,85 @@ export class PaymentComponent implements OnInit {
   }
 
   updateUserAddress() {
-    this.address = Object.assign({},this.editUserAddressForm.value)
-    this.userService.updateUserAddress(this.authService.decodedToken.nameid, this.address).subscribe((user) => {
-    //change current user 
-      this.authService.currentUser = user;
-      //update localstorage
-      localStorage.setItem('user', JSON.stringify(user));
-      this.changeAddressEditMode();
-    });
+    this.address = Object.assign({}, this.editUserAddressForm.value);
+    this.userService
+      .updateUserAddress(this.authService.decodedToken.nameid, this.address)
+      .subscribe((user) => {
+        //change current user
+        this.authService.currentUser = user;
+        //update localstorage
+        localStorage.setItem('user', JSON.stringify(user));
+        this.changeAddressEditMode();
+      });
+  }
+
+  PayCreditCard() {
+    let value = this.orderService.currentOrder.totalBill.toString() + '00';
+    let paymentModel = {
+      CardNumber: this.ccForm.value.ccnumber,
+      Month: Number(this.ccForm.value.ccmonth),
+      Year: Number(this.ccForm.value.ccyear),
+      Cvc: this.ccForm.value.cvv,
+      Value: Number(value),
+    };
+    this.paymentService.Pay(paymentModel).subscribe(
+      () => {
+        this.alertify.success('Payment succeed!');
+      },
+      (error) => {
+        this.alertify.error(
+          'Charge failed! Please check your credit card information'
+        );
+      },
+      () => {
+        this.orderService.sendOrder(false);
+
+        localStorage.removeItem('order');
+        this.orderService.currentOrder = undefined;
+        this.router.navigate(['/home']);
+      }
+    );
   }
 
 
-  doSomething(){
-    console.log(this.ccForm);
-  }
-  // **************************************************************************************************************************************
 
+
+
+  PayCash(){
+
+//send order to data base 
+this.orderService.sendOrder(this.isCash).subscribe(data=>console.log(data));
+//reset order
+this.orderService.resetOrder();
+//navigate to "success order" page
+this.router.navigate(['/home']);
+
+
+
+  }
+  // PayCreditCard() {
+  //   let value = this.orderService.currentOrder.totalBill.toString() + '00';
+  //   let paymentModel = {
+  //     CardNumber: this.ccForm.value.ccnumber,
+  //     Month: Number(this.ccForm.value.ccmonth),
+  //     Year: Number(this.ccForm.value.ccyear),
+  //     Cvc: this.ccForm.value.cvv,
+  //     Value: Number(value),
+  //   };
+  //   this.paymentService.Pay(paymentModel).subscribe(
+  //     () => {
+  //       this.alertify.success('Payment succeed!');
+  //     },
+  //     (error) => {
+  //       this.alertify.error(
+  //         'Charge failed! Please check your credit card information'
+  //       );
+  //     },
+  //     () => {
+  //       localStorage.removeItem('order');
+  //       this.orderService.currentOrder = undefined;
+  //       this.router.navigate(['/home']);
+  //     }
+  //   );
+  // }
 }

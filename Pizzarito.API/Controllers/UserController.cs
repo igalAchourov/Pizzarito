@@ -18,8 +18,7 @@ namespace Pizzarito.API.Controllers
         public UserController(IUserRepository repo, IMapper mapper)
         {
             _repo = repo;
-
-        }
+            }
 
 
         [HttpPut("{id}")]
