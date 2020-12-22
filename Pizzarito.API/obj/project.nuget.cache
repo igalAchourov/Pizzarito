@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MAArGV9dRSSR6DsOizI1oflaOoe5/5AbkjHTy4fcinjtQu0Nh2h1Jh67pPwFbLj97jzmHCF78Ryl47TqzUxijQ==",
+  "dgSpecHash": "Laq4a6jFnyO730WiDDqZl2MMQheeq+ZFpcbi9zfAGW1yPmLm3yfD4jVX6g6fjE8eRTnMHt+K0pz3oDJzTO0Osw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\igala\\Desktop\\Pizzarito\\pizzarito.API\\Pizzarito.API.csproj",
+  "projectFilePath": "C:\\Users\\igala\\Desktop\\Pizzarito\\pizzarito.api\\Pizzarito.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\igala\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
     "C:\\Users\\igala\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.0.1\\automapper.extensions.microsoft.dependencyinjection.8.0.1.nupkg.sha512",
