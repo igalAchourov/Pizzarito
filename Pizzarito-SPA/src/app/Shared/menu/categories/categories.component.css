@@ -1,13 +1,7 @@
-td {
-  text-align: center;
-  border: 2px  solid tomato;
-  height: 280px;
-  width: 280px;
+.pointer{
   cursor: pointer;
-  background-color:#FFEF93;
 }
-td:hover {
-  background-color: tomato;
-
-
+img{
+  width:255px;
+  height: 174px;
 }

@@ -1,17 +1,10 @@
-<div class="container">
-  <div class="row justify-content-center text-center">
-    <div class="col-lg-6">
-      <h1><i> Menu</i></h1>
-      <table class="mt-2">
-        <tr>
-          <td [routerLink]="['starters']"><h2>Starters</h2></td>
-          <td [routerLink]="['pizzas']"><h2>Pizzas</h2></td>
-        </tr>
-        <tr>
-          <td [routerLink]="['desserts']"><h2>Desserts</h2></td>
-          <td [routerLink]="['drinks']"><h2>Drinks</h2></td>
-        </tr>
-      </table>
-    </div>
+<div class="container text-center">
+  <h1><i> Menu</i></h1>
+  <div class="row mt-5">
+   
+    <div class="col-xs-3 col-md-3 pointer" [routerLink]="['starters']"><img src="../../../../assets/starters.jpg" class="img-thumbnail" alt="Starters">Starters</div>
+    <div class="col-xs-3 col-md-3 pointer" [routerLink]="['pizzas']"><img src="../../../../assets/pizzas.jpg" class="img-thumbnail" alt="Pizzas">Pizzas</div>
+    <div class="col-xs-3 col-md-3 pointer" [routerLink]="['desserts']"><img src="../../../../assets/desserts.jpg" class="img-thumbnail" alt="Desserts">Desserts</div>
+    <div class="col-xs-3 col-md-3 pointer" [routerLink]="['drinks']"><img src="../../../../assets/drinks.jpg" class="img-thumbnail" alt="Drinks">Drinks</div>
   </div>
 </div>

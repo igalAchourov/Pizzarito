@@ -33,6 +33,7 @@ import { PaymentMethodPipe } from './Shared/Pipes/payment-method.pipe';
 import { OrderHistoryDetailComponent } from './Shared/order-history-detail/order-history-detail.component';
 import { OrderHistoryDetailResolver } from './Resolvers/orderHistoryDetail.resolver';
 import { StripeModule } from "stripe-angular";
+import { OrderCompleteComponent } from './Shared/order-complete/order-complete.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -59,6 +60,7 @@ export function tokenGetter() {
     OrderHistoryComponent,
     PaymentMethodPipe,
     OrderHistoryDetailComponent,
+    OrderCompleteComponent,
   ],
   imports: [
     BrowserModule,

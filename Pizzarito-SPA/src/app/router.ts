@@ -13,12 +13,14 @@ import { ExtrasComponent } from './shared/menu/pizzas/extras/extras.component';
 import { RegisterComponent } from './Shared/register/register.component';
 import { OrderComponent } from './Shared/order/order.component';
 import { ExtrasGuard } from './Guards/extras.guard';
+import {CompleteOrderGuard } from './Guards/complete-order.guard';
 import { PaymentComponent } from './Shared/payment/payment.component';
 import { MenuItemsResolver } from 'src/app/Resolvers/menuItems.resolver';
 import { PreventUnsavedChangesPaymentGuard } from './Guards/prevent-unsaved-changes-payment.guard';
 import { OrderHistoryComponent } from './Shared/order-history/order-history.component';
 import { OrderHistoryDetailResolver } from 'src/app/Resolvers/orderHistoryDetail.resolver';
 import { OrderHistoryDetailComponent } from './Shared/order-history-detail/order-history-detail.component';
+import { OrderCompleteComponent } from './Shared/order-complete/order-complete.component';
 
 
 export const routes: Routes = [
@@ -83,8 +85,14 @@ export const routes: Routes = [
   {
     path: 'payment',
     component: PaymentComponent,
-    canDeactivate: [PreventUnsavedChangesPaymentGuard],
+    
   },
-
+  {
+    path:'order_complete',
+    component:OrderCompleteComponent,
+    canActivate:[CompleteOrderGuard]
+    
+  },
+  
   { path: '**', component: PageNotFoundComponent },
 ];

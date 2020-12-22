@@ -15,7 +15,7 @@ export class OrderHistoryComponent implements OnInit {
   constructor(private orderService:OrderService,private authService:AuthService) { }
 
   ngOnInit(): void {
-    this.orderService.getOrders(this.authService.decodedToken.nameid).subscribe(data=>{this.orders=data; console.log(this.orders)});;
+    this.orderService.getOrders(this.authService.decodedToken.nameid).subscribe(data=>{this.orders=data});;
   }
 
 }

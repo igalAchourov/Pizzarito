@@ -22,7 +22,6 @@ export class OrderComponent implements OnInit {
 
   removeStarter(starter: MenuItem) {
     this.orderService.removeStarter(starter);
-    console.log(this.order);
   }
   removeDessert(dessert: MenuItem) {
     this.orderService.removeDessert(dessert);
@@ -40,7 +39,7 @@ export class OrderComponent implements OnInit {
 
   proceedToPayment(){
 
-    if(!this.authService.currentUser){
+    if(this.authService.currentUser == undefined){
 
       this.alertify.error('You must login first!');
       this.router.navigate(['home']);

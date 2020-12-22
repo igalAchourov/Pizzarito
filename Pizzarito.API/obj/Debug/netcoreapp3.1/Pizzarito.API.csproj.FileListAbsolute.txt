@@ -66,8 +66,6 @@ C:\Users\igala\Desktop\Pizzarito\pizzarito.api\obj\Debug\netcoreapp3.1\Pizzarito
 C:\Users\igala\Desktop\Pizzarito\pizzarito.api\obj\Debug\netcoreapp3.1\Pizzarito.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\igala\Desktop\Pizzarito\pizzarito.api\obj\Debug\netcoreapp3.1\Pizzarito.API.dll
 C:\Users\igala\Desktop\Pizzarito\pizzarito.api\obj\Debug\netcoreapp3.1\Pizzarito.API.pdb
-C:\Users\igala\Desktop\Pizzarito\pizzarito.api\bin\Debug\netcoreapp3.1\appsettings.Development.json
-C:\Users\igala\Desktop\Pizzarito\pizzarito.api\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\igala\Desktop\Pizzarito\pizzarito.api\bin\Debug\netcoreapp3.1\Seeds\ExtraSeedData.json
 C:\Users\igala\Desktop\Pizzarito\pizzarito.api\bin\Debug\netcoreapp3.1\Pizzarito.API.exe
 C:\Users\igala\Desktop\Pizzarito\pizzarito.api\bin\Debug\netcoreapp3.1\Pizzarito.API.deps.json
@@ -132,3 +130,5 @@ C:\Users\igala\Desktop\Pizzarito\pizzarito.api\bin\Debug\netcoreapp3.1\AutoMappe
 C:\Users\igala\Desktop\Pizzarito\pizzarito.api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\igala\Desktop\Pizzarito\Pizzarito.API\obj\Debug\netcoreapp3.1\scopedcss\bundle\Pizzarito.API.styles.css
 C:\Users\igala\Desktop\Pizzarito\pizzarito.api\bin\Debug\netcoreapp3.1\Stripe.net.dll
+C:\Users\igala\Desktop\Pizzarito\Pizzarito.API\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\igala\Desktop\Pizzarito\Pizzarito.API\bin\Debug\netcoreapp3.1\appsettings.json

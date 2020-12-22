@@ -3,6 +3,11 @@
 @import "../node_modules/alertifyjs/build/css/themes/bootstrap.min.css";
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~bootswatch/dist/sketchy/bootstrap.min.css";
+
+
+
+
+
 h1{
     color: tomato;
    font-size: 60px;

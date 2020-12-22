@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row text-center">
+    <div class="col-sm-12">
+      <h1><i>Order done!</i></h1>
+
+      <p> <i>
+        Your order is received, you will enjoy it in about 45 min since the
+        order was done, thank you for choosing PIZZARITO!</i>
+      </p>
+      <p style="font-size: larger;"> Order number: {{ order.id }}</p>
+      <p style="font-size: larger;">Time ordered: {{ order.date | date: "MMM d, y, h:mm:ss a"}}</p>
+
+<button class="btn btn-success btn-lg" routerLink="/home">Back to home</button>
+    </div>
+  </div>
+</div>

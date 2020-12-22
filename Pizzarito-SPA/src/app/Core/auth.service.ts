@@ -9,7 +9,9 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    
+  }
 
   baseUrl = environment.baseUrl;
   jwtHelper = new JwtHelperService();
@@ -24,7 +26,6 @@ export class AuthService {
     return this.http.post(this.baseUrl + 'auth/login', user).pipe(
       map((response: any) => {
         const user = response;
-        console.log(response);
         if (user) {
           
           localStorage.setItem('token', user.token);

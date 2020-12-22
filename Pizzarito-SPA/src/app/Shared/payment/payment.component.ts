@@ -27,8 +27,11 @@ export class PaymentComponent implements OnInit {
   editUserAddressForm: FormGroup;
   addressEditMode: boolean = false;
   onlyNumsRegEx = '^[0-9]*$';
-
+  chargeErrMsg: string =
+    'Charge failed! Please check your credit card information';
+  chargeDoneMsg: string = 'Payment succeed!';
   address: Address;
+  completedOrder: any;
 
   constructor(
     public authService: AuthService,
@@ -113,63 +116,52 @@ export class PaymentComponent implements OnInit {
       Value: Number(value),
     };
     this.paymentService.Pay(paymentModel).subscribe(
-      () => {
-        this.alertify.success('Payment succeed!');
+      (data) => {
+        this.orderService.sendOrder(this.isCash).subscribe(
+          (x) => {
+           sessionStorage.setItem('completedOrder', JSON.stringify(x));
+            this.alertify.success(this.chargeDoneMsg);
+          },
+          (error) => {
+            this.alertify.error('Error occurred, please try again later ');
+          },
+          () => {
+            this.orderService.resetOrder();
+            this.router.navigate(['/order_complete']);
+          }
+        );
+        sessionStorage.setItem('completedOrder', JSON.stringify(data));
       },
       (error) => {
-        this.alertify.error(
-          'Charge failed! Please check your credit card information'
-        );
+        this.alertify.error(this.chargeErrMsg);
+      },
+     
+    );
+  }
+
+  PayCash() {
+    
+    this.orderService.sendOrder(this.isCash).subscribe(
+      (data) => {
+       sessionStorage.setItem('completedOrder', JSON.stringify(data));
+        this.alertify.success(this.chargeDoneMsg);
+      },
+      (error) => {
+        this.alertify.error('Error occurred, please try again later ');
       },
       () => {
-        this.orderService.sendOrder(false);
-
-        localStorage.removeItem('order');
-        this.orderService.currentOrder = undefined;
-        this.router.navigate(['/home']);
+        this.orderService.resetOrder();
+        this.router.navigate(['/order_complete']);
       }
     );
   }
 
-
-
-
-
-  PayCash(){
-
-//send order to data base 
-this.orderService.sendOrder(this.isCash).subscribe(data=>console.log(data));
-//reset order
-this.orderService.resetOrder();
-//navigate to "success order" page
-this.router.navigate(['/home']);
-
-
-
+  Pay() {
+    if (this.isCash) {
+      this.PayCash();
+    } else {
+      this.PayCreditCard();
+    }
+    
   }
-  // PayCreditCard() {
-  //   let value = this.orderService.currentOrder.totalBill.toString() + '00';
-  //   let paymentModel = {
-  //     CardNumber: this.ccForm.value.ccnumber,
-  //     Month: Number(this.ccForm.value.ccmonth),
-  //     Year: Number(this.ccForm.value.ccyear),
-  //     Cvc: this.ccForm.value.cvv,
-  //     Value: Number(value),
-  //   };
-  //   this.paymentService.Pay(paymentModel).subscribe(
-  //     () => {
-  //       this.alertify.success('Payment succeed!');
-  //     },
-  //     (error) => {
-  //       this.alertify.error(
-  //         'Charge failed! Please check your credit card information'
-  //       );
-  //     },
-  //     () => {
-  //       localStorage.removeItem('order');
-  //       this.orderService.currentOrder = undefined;
-  //       this.router.navigate(['/home']);
-  //     }
-  //   );
-  // }
 }

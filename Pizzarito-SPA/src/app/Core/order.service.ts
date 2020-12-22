@@ -14,7 +14,6 @@ import { AuthService } from './auth.service';
   providedIn: 'root',
 })
 export class OrderService {
-
   currentOrder: Order;
   baseUrl = environment.baseUrl;
 
@@ -29,7 +28,6 @@ export class OrderService {
       this.currentOrder.items = 0;
     }
   }
-
 
   updateLsAndTotalBill(item: MenuItem, calc: string) {
     if (calc == 'add') {
@@ -53,19 +51,17 @@ export class OrderService {
     return false;
   }
 
-  resetOrder(){
-
-    this.currentOrder=undefined;
-
-
-
-    console.log(this.currentOrder);
-    
+  resetOrder() {
+    this.currentOrder.desserts = [];
+    this.currentOrder.drinks = [];
+    this.currentOrder.starters = [];
+    this.currentOrder.pizzas = [];
+    this.currentOrder.totalBill = 0;
+    this.currentOrder.items = 0;
+    localStorage.removeItem("order");
   }
 
-  
-  sendOrder(isCash:boolean) {
-
+  sendOrder(isCash: boolean) {
     let orderToServer = {
       UserId: this.authService.currentUser.id,
       TotalBill: this.currentOrder.totalBill,
@@ -76,7 +72,7 @@ export class OrderService {
       Pizzas: this.mapPizzas(this.currentOrder.pizzas),
     };
 
-     return this.http.post(this.baseUrl + 'order', orderToServer);
+    return this.http.post(this.baseUrl + 'order', orderToServer);
   }
 
   // ******************ADD FUNCTIONS*************************
@@ -206,13 +202,12 @@ export class OrderService {
     );
   }
 
-
   //******************* MAPPING FUNCTIONS *******************
   mapToOrderedDesserts(desserts: MenuItem[]) {
     let itemsMap = new Map<number, any>();
     let itemsToServer: any[] = [];
 
-    if( desserts ){
+    if (desserts) {
       desserts.forEach((el) => {
         if (itemsMap.has(el.id)) {
           itemsMap.set(el.id, {
@@ -228,15 +223,12 @@ export class OrderService {
           });
         }
       });
-  
+
       itemsMap.forEach((val, key) => {
         itemsToServer.push(val);
       });
-   
     }
-    return itemsToServer; 
-
- 
+    return itemsToServer;
   }
 
   mapToOrderedDrinks(drinks: MenuItem[]) {
@@ -244,8 +236,7 @@ export class OrderService {
     let itemsMap = new Map<number, any>();
     let itemsToServer: any[] = [];
 
-
-    if(drinks){
+    if (drinks) {
       drinks.forEach((el) => {
         if (itemsMap.has(el.id)) {
           itemsMap.set(el.id, {
@@ -261,12 +252,11 @@ export class OrderService {
           });
         }
       });
-  
+
       itemsMap.forEach((val, key) => {
         itemsToServer.push(val);
       });
     }
-  
 
     return itemsToServer;
   }
@@ -276,28 +266,28 @@ export class OrderService {
     let itemsMap = new Map<number, any>();
     let itemsToServer: any[] = [];
 
-    if(starters){
-        starters.forEach((el) => {
-      if (itemsMap.has(el.id)) {
-        itemsMap.set(el.id, {
-          StarterId: el.id,
-          Unit: itemsMap.get(el.id).Unit + 1,
-          TotalBill: itemsMap.get(el.id).TotalBill + el.price,
-        });
-      } else {
-        itemsMap.set(el.id, {
-          StarterId: el.id,
-          Unit: 1,
-          TotalBill: el.price,
-        });
-      }
-    });
+    if (starters) {
+      starters.forEach((el) => {
+        if (itemsMap.has(el.id)) {
+          itemsMap.set(el.id, {
+            StarterId: el.id,
+            Unit: itemsMap.get(el.id).Unit + 1,
+            TotalBill: itemsMap.get(el.id).TotalBill + el.price,
+          });
+        } else {
+          itemsMap.set(el.id, {
+            StarterId: el.id,
+            Unit: 1,
+            TotalBill: el.price,
+          });
+        }
+      });
 
-    itemsMap.forEach((val, key) => {
-      itemsToServer.push(val);
-    });
+      itemsMap.forEach((val, key) => {
+        itemsToServer.push(val);
+      });
     }
-  
+
     return itemsToServer;
   }
 
@@ -306,36 +296,37 @@ export class OrderService {
     let pizza: any = new Object();
     pizza.Extras = [];
 
-    
-    pizzas.forEach((el) => {
-      pizza.SizeId = el.size.id;
-      pizza.TotalBill=el.totalBill;
+    if (pizzas) {
+      pizzas.forEach((el) => {
+        pizza.SizeId = el.size.id;
+        pizza.TotalBill = el.totalBill;
 
-      if (el.extras) {
-        el.extras.forEach((ex) => {
-          pizza.Extras.push({ ExtraId: ex.id });
-        });
-      }
-      
-      
-      pizzasToServer.push(pizza);
-      pizza=new Object();
-      pizza.Extras = [];
-    });
+        if (el.extras) {
+          el.extras.forEach((ex) => {
+            pizza.Extras.push({ ExtraId: ex.id });
+          });
+        }
+
+        pizzasToServer.push(pizza);
+        pizza = new Object();
+        pizza.Extras = [];
+      });
+    }
 
     return pizzasToServer;
   }
 
-
-
-  getOrders(id:number){
-    return this.http.get(this.baseUrl+'order/'+id);
+  getOrders(id: number) {
+    return this.http.get(this.baseUrl + 'order/' + id);
   }
 
-  getOrder(orderId:number){
-    return this.http.get(this.baseUrl+'order/'+this.authService.decodedToken.nameid+'/orderHistory/'+orderId);
+  getOrder(orderId: number) {
+    return this.http.get(
+      this.baseUrl +
+        'order/' +
+        this.authService.decodedToken.nameid +
+        '/orderHistory/' +
+        orderId
+    );
   }
-
-
-
 }
